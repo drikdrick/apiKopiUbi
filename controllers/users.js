@@ -4,8 +4,18 @@ const sql = require('../configs/database');
 module.exports = {
   getAllUser(req, res) {
     const query = 'Select * from users';
-
     sql.query(query, (err, results)=>{
+      if (err) throw err;
+      res.json({
+        status: true,
+        message: 'Data berhasil diperoleh!',
+        data: results,
+      });
+    });
+  },
+  getUserById(req, res) {
+    const query = 'Select * from users where idusers = ?';
+    sql.query(query, [req.params.id], (err, results)=>{
       if (err) throw err;
       res.json({
         status: true,
