@@ -1,7 +1,17 @@
-const config = require('../configs/database');
-const mysql = require('mysql');
-const connection = mysql.createPool(config);
+const sql = require('../configs/database');
 
-connection.on('error', (err) => {
-  console.error(err);
-});
+module.exports = {
+  getAllUser(req, res) {
+    const query = 'Select * from users';
+
+    sql.query(query, (err, results)=>{
+      if (err) throw err;
+      res.json({
+        status: true,
+        message: 'Data berhasil diperoleh!',
+        data: results,
+      });
+    });
+  },
+
+};
