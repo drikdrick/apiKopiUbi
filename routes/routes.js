@@ -1,5 +1,5 @@
 const router = require('express')();
-const {users, products} = require('../controllers');
+const {users, products, stores} = require('../controllers');
 // User Module
 router.get('/users', users.getAllUser );
 router.get('/users/:id', users.getUserById );
@@ -10,5 +10,10 @@ router.post('/register', users.addUser);
 router.get('/products', products.getAllProducts);
 router.get('/products/:id', products.getProductsById);
 router.get('/categories', products.getAllCategories);
+router.get('/categories/:id', products.getProductsByCategory);
+
+// Store Modules
+router.get('/stores/open', stores.getAllOpenStore);
+router.get('/stores/close', stores.getAllClosedStore);
 
 module.exports = router;
