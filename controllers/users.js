@@ -51,25 +51,33 @@ module.exports = {
       password: req.body.password,
       name: req.body.name,
       role: 2,
-      created_at: moment().format('YYYY-MM-DD HH:MM:SS'),
-      updated_at: moment().format('YYYY-MM-DD HH:MM:SS'),
+      created_at: moment().format('YYYY-MM-DD HH:MM'),
+      updated_at: moment().format('YYYY-MM-DD HH:MM'),
     };
+
     const query = 'INSERT INTO users SET ?';
+
     sql.query(query, data, (err, results)=>{
       if (err) {
-        console.log(err);
-        res.json({
-          status: false,
-          message: 'Registrasi gagal, coba lagi.',
-          data: err,
+        // eslint-disable-next-line max-len
+        sql.query('SELECT * FROM users WHERE username = ? OR email = ?', [data.username, data.email], function(error, results, fields) {
+          console.log(results);
+          if (results.length > 0) {
+            res.json({
+              status: false,
+              message: 'Username/email sudah terdaftar.',
+            });
+            res.end();
+          }
         });
       } else {
         res.json({
           status: true,
-          message: 'Registrasi berhsil! Silahkan login.',
+          message: 'Registrasi berhasil, silahkan login.',
           data: results,
         });
-      };
+        res.end();
+      }
     });
   },
 };
