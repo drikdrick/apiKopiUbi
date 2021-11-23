@@ -18,6 +18,7 @@ router.get('/stores/close', stores.getAllClosedStore);
 
 // Post Modules
 router.post('/post', posts.addPost);
+router.post('/comment', posts.addComment);
 
 // Order Modules
 // router.get('/order', orders);
