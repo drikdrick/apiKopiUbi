@@ -11,12 +11,14 @@ module.exports = {
           message: 'Data berhasil diperoleh.',
           data: results,
         });
+        res.end();
       } else {
         res.json({
           status: false,
           message: 'Tidak ada toko tersedia',
           data: [],
         });
+        res.end();
       }
     });
   },
@@ -30,12 +32,14 @@ module.exports = {
           message: 'Data berhasil diperoleh.',
           data: results,
         });
+        res.end();
       } else {
         res.json({
           status: false,
           message: 'Tidak ada toko tersedia',
           data: [],
         });
+        res.end();
       }
     });
   },

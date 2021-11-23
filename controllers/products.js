@@ -11,12 +11,14 @@ module.exports = {
           message: 'Data berhasil diperoleh.',
           data: results,
         });
+        res.end();
       } else {
         res.json({
           status: true,
           message: 'Tidak ada produk tersedia.',
           data: results,
         });
+        res.end();
       }
     });
   },
@@ -30,12 +32,14 @@ module.exports = {
           message: 'Data berhasil diperoleh.',
           data: results,
         });
+        res.end();
       } else {
         res.status(404).json({
           status: false,
           message: 'Produk tidak tersedia.',
           // data: results,
-        }); ;
+        });
+        res.end();
       }
     });
   },
@@ -49,12 +53,14 @@ module.exports = {
           message: 'Data berhasil diperoleh.',
           data: results,
         });
+        res.end();
       } else {
         res.json({
           status: true,
           message: 'Tidak ada kategori tersedia.',
           data: results,
         });
+        res.end();
       }
     });
   },
@@ -68,12 +74,14 @@ module.exports = {
           message: 'Data berhasil diperoleh.',
           data: results,
         });
+        res.end();
       } else {
         res.json({
           status: true,
           message: 'Tidak ada produk tersedia.',
           data: results,
         });
+        res.end();
       }
     });
   },

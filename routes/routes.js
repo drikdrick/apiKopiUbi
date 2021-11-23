@@ -1,8 +1,8 @@
 const router = require('express')();
 const {users, products, stores, orders, posts} = require('../controllers');
 // User Module
-router.get('/users', users.getAllUser );
-router.get('/users/:id', users.getUserById );
+router.get('/users', users.getAllUser);
+router.get('/users/:id', users.getUserById);
 router.post('/login', users.checkLogin);
 router.post('/register', users.addUser);
 
@@ -22,5 +22,6 @@ router.post('/comment', posts.addComment);
 
 // Order Modules
 router.post('/order', orders.addNewOrder);
+router.get('/order/:id', orders.getDoneOrder);
 
 module.exports = router;

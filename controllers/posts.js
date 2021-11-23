@@ -25,6 +25,7 @@ module.exports = {
           message: 'Postingan berhasil diupload.',
           data: results,
         });
+        res.end();
       }
     });
   },
@@ -44,12 +45,14 @@ module.exports = {
           status: false,
           message: 'Komentar gagal diupload.',
         });
+        res.end();
         throw err;
       }
       res.json({
         status: true,
         message: 'Komentar berhasil diupload.',
       });
+      res.end();
     });
   },
 };
