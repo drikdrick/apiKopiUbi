@@ -23,6 +23,7 @@ module.exports = {
         res.json({
           status: true,
           message: 'Postingan berhasil diupload.',
+          data: results,
         });
       }
     });
