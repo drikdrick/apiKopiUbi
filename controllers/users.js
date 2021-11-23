@@ -51,8 +51,8 @@ module.exports = {
       password: req.body.password,
       name: req.body.name,
       role: 2,
-      created_at: moment().format('YYYY-MM-DD HH:MM'),
-      updated_at: moment().format('YYYY-MM-DD HH:MM'),
+      created_at: moment.now,
+      updated_at: moment.now,
     };
 
     const query = 'INSERT INTO users SET ?';
@@ -63,7 +63,7 @@ module.exports = {
         sql.query('SELECT * FROM users WHERE username = ? OR email = ?', [data.username, data.email], function(error, results, fields) {
           console.log(results);
           if (results.length > 0) {
-            res.json({
+            res.status(400).json({
               status: false,
               message: 'Username/email sudah terdaftar.',
             });

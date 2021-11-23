@@ -59,7 +59,7 @@ module.exports = {
     });
   },
   getProductsByCategory(req, res) {
-    const query = 'Select * from products where category = ?';
+    const query = 'Select * from products where categories = ?';
     sql.query(query, req.params.id, (err, results)=>{
       if (err) throw err;
       if (results.length) {
